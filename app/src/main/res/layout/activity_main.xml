@@ -53,4 +53,26 @@
         android:layout_alignParentRight="true"
         android:orientation="vertical" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="L1:   "
+        android:id="@+id/L1_TV"
+        android:layout_alignTop="@+id/L1"
+        android:layout_marginTop="75dp"
+        android:layout_toLeftOf="@+id/L1"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="L2:   "
+        android:id="@+id/L2_TV"
+        android:layout_alignTop="@+id/L2"
+        android:layout_marginTop="75dp"
+        android:layout_toLeftOf="@+id/L2"
+         />
+
 </RelativeLayout>

@@ -18,6 +18,11 @@ public class MyView extends View {
     private Paint paint;
     private Paint text;
     String shape = "tshape";
+    int yparam1=6;
+    int yparam2=6;
+    int tparam1=6;
+    int tparam2=8;
+    int Bitmapsize=1200;
 
     public MyView(Context context) {
         this(context, null);
@@ -37,31 +42,40 @@ public class MyView extends View {
             text.setColor(Color.BLACK);
             paint.setStrokeWidth(thickness);
             text.setTextSize(30);
-            Bitmap bg = Bitmap.createBitmap(1200, 1200, Bitmap.Config.ARGB_8888);
+            Bitmap bg = Bitmap.createBitmap(Bitmapsize, Bitmapsize, Bitmap.Config.ARGB_8888);
 
         if (shape=="tshape") {
 
-
-            canvas.drawLine(300, 100, 900, 100, paint);
-            canvas.drawLine(600, 100, 600, 900, paint);
-            canvas.drawText("L1 [ mm/1000 ]", 500, 50, text);
-            canvas.drawText("L2 [ mm/1000 ]", 360, 500, text);
+            canvas.drawLine((Bitmapsize/2)-(tparam1*100/2), 100, (Bitmapsize+(tparam1*100))/2, 100, paint);
+            canvas.drawLine(600, 100, 600, 100+(tparam2*100), paint);
+            canvas.drawText("L1 [ mm ]", 550, 50, text);
+            canvas.drawText("L2 [ mm ]", 400, 500, text);
         }
 
 
+
         if (shape=="yshape"){
-            canvas.drawColor(Color.WHITE);}
+            canvas.drawLine((Bitmapsize/2)-(yparam1*100/2), 100, 600, 300, paint);
+            canvas.drawLine(600, 300, (Bitmapsize+(yparam1*100))/2, 100, paint);
+            canvas.drawLine(600, 300, 600, 300+(yparam2*100), paint);
+            canvas.drawText("L1 [ mm ]", 550, 50, text);
+            canvas.drawText("L2 [ mm ]", 400, 500, text);
+            ;}
 
 
     }
 
 
-    public void DrawYShapedCanvas() {
+    public void DrawYShapedCanvas(int L2chosen, int L1chosen) {
+        yparam1=L1chosen;
+        yparam2=L2chosen;
         shape="yshape";
         invalidate();
     }
 
-    public void DrawTShapedCanvas() {
+    public void DrawTShapedCanvas(int L2chosen, int L1chosen) {
+        tparam1=L1chosen;
+        tparam2=L2chosen;
         shape="tshape";
         invalidate();
     }
