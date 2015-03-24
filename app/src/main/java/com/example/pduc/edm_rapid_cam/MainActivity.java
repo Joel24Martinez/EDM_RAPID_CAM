@@ -15,8 +15,15 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
+        Mycanvas = (MyView) findViewById(R.id.custom_view);
 
     }
+    public void Yshapedclicked(View v) {
+        Mycanvas.DrawYShapedCanvas();
+    }
+
+    public void Tshapedclicked(View v) {
+        Mycanvas.DrawTShapedCanvas();
+    }
+
 }

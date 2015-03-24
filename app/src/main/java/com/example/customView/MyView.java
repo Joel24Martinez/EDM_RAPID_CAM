@@ -17,7 +17,7 @@ public class MyView extends View {
     private PointF point;
     private Paint paint;
     private Paint text;
-    boolean erase = false;
+    String shape = "tshape";
 
     public MyView(Context context) {
         this(context, null);
@@ -38,18 +38,35 @@ public class MyView extends View {
             paint.setStrokeWidth(thickness);
             text.setTextSize(30);
             Bitmap bg = Bitmap.createBitmap(1200, 1200, Bitmap.Config.ARGB_8888);
+
+        if (shape=="tshape") {
+
+
             canvas.drawLine(300, 100, 900, 100, paint);
             canvas.drawLine(600, 100, 600, 900, paint);
             canvas.drawText("L1 [ mm/1000 ]", 500, 50, text);
             canvas.drawText("L2 [ mm/1000 ]", 360, 500, text);
+        }
 
 
-
-        if (erase==true){
+        if (shape=="yshape"){
             canvas.drawColor(Color.WHITE);}
 
 
     }
+
+
+    public void DrawYShapedCanvas() {
+        shape="yshape";
+        invalidate();
+    }
+
+    public void DrawTShapedCanvas() {
+        shape="tshape";
+        invalidate();
+    }
+
+
 
   /*public void Yshapedclicked(View view) {
       erase=true;
