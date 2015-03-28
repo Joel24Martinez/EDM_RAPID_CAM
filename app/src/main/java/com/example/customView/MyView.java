@@ -22,6 +22,10 @@ public class MyView extends View {
     int tparam1=6;
     int tparam2=8;
     int Bitmapsize=1200;
+    int maxtouches=30;
+    float[] x=new float [maxtouches];
+    float[] y=new float [maxtouches];
+    int touches=0;
 
     public MyView(Context context) {
         this(context, null);
@@ -36,7 +40,7 @@ public class MyView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
 
-            int thickness = 30;
+            int thickness = 10;
             paint.setColor(Color.BLACK);
             text.setColor(Color.BLACK);
             paint.setStrokeWidth(thickness);
@@ -61,6 +65,13 @@ public class MyView extends View {
             canvas.drawText("L2 [ mm ]", 400, 500, text);
             ;}
 
+        if (shape=="customshape"){
+            if (touches>1){
+                for(int l=1; l<touches; l++){
+                    canvas.drawLine(x[l-1], y[l-1], x[l], y[l], paint);                }
+            }
+                        ;}
+
 
     }
 
@@ -79,6 +90,43 @@ public class MyView extends View {
         invalidate();
     }
 
+    public void DrawCustomShapedCanvas() {
+        shape="customshape";
+        for(int k=1; k<=touches; k++){
+            x[k-1]=0;
+            y[k-1]=0;
+        }
+        touches=0;
+
+        invalidate();
+    }
+
+    public boolean onTouchEvent(MotionEvent event) {
+
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if(shape=="customshape") {
+                    if (touches < maxtouches) {
+                        x[touches] = event.getX();
+                        y[touches] = event.getY();
+                        touches = touches + 1;
+                        invalidate();
+                    }
+                }
+                invalidate();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                invalidate();
+                break;
+            case MotionEvent.ACTION_UP:
+                invalidate();
+                break;
+        }
+
+
+        return true;
+    }
 
 
   /*public void Yshapedclicked(View view) {

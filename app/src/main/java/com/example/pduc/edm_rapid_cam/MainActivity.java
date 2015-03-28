@@ -87,4 +87,9 @@ public class MainActivity extends Activity {
         Mycanvas.DrawTShapedCanvas(L2chosen, L1chosen);
     }
 
+    public void Customclicked(View v) {
+        shape="cshape";
+        Mycanvas.DrawCustomShapedCanvas();
+    }
+
 }

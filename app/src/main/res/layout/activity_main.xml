@@ -41,6 +41,7 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="Custom"
+        android:onClick="Customclicked"
         android:id="@+id/button"
         android:layout_marginTop="25dp"
         android:layout_below="@+id/Yshaped"
