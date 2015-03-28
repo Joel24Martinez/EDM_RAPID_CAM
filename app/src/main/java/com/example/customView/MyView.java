@@ -14,7 +14,6 @@ import android.widget.Button;
 import com.example.pduc.edm_rapid_cam.R;
 
 public class MyView extends View {
-    private PointF point;
     private Paint paint;
     private Paint text;
     String shape = "tshape";

@@ -14,6 +14,7 @@ public class MainActivity extends Activity {
     NumberPicker L2;
     int L1chosen=6;
     int L2chosen=8;
+    String shape = "tshape";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,12 @@ public class MainActivity extends Activity {
             public void onValueChange(NumberPicker picker1, int
                     oldVal1, int newVal1) {
                 L1chosen=newVal1;
+                if(shape=="tshape"){
+                    Mycanvas.DrawTShapedCanvas(L2chosen, L1chosen);
+                }
+                if(shape=="yshape"){
+                    Mycanvas.DrawYShapedCanvas(L2chosen, L1chosen);
+                }
                             }
         });
 
@@ -47,10 +54,14 @@ public class MainActivity extends Activity {
             public void onValueChange(NumberPicker picker2, int
                     oldVal2, int newVal2) {
                 L2chosen=newVal2;
+                if(shape=="tshape"){
+                    Mycanvas.DrawTShapedCanvas(L2chosen, L1chosen);
+                }
+                if(shape=="yshape"){
+                    Mycanvas.DrawYShapedCanvas(L2chosen, L1chosen);
+                }
             }
         });
-
-
 
 
     }
@@ -63,6 +74,7 @@ public class MainActivity extends Activity {
         L2.setValue(6);
             L2chosen=6;
         }
+        shape="yshape";
         Mycanvas.DrawYShapedCanvas(L2chosen, L1chosen);
     }
 
@@ -71,6 +83,7 @@ public class MainActivity extends Activity {
         L1.setMinValue(0);
         L2.setMaxValue(8);
         L2.setMinValue(0);
+        shape="tshape";
         Mycanvas.DrawTShapedCanvas(L2chosen, L1chosen);
     }
 
