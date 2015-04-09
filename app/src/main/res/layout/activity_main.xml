@@ -87,7 +87,16 @@
         android:layout_marginTop="75dp"
         android:layout_toLeftOf="@+id/L2"
          />
-
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Choose coordinates"
+        android:onClick="ChooseCclicked"
+        android:id="@+id/buttonChC"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="#00000000"
+        />
 
 
 
