@@ -1,6 +1,7 @@
 package com.example.customView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -11,6 +12,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.pduc.edm_rapid_cam.ChooseCoordinates;
+import com.example.pduc.edm_rapid_cam.MainActivity;
 import com.example.pduc.edm_rapid_cam.R;
 
 public class MyView extends View {
@@ -24,9 +27,9 @@ public class MyView extends View {
     int tparam2 = 8;
     int Bitmapsize = 1200;
     int maxtouches = 30;
-    float[] x = new float[maxtouches];
-    float[] y = new float[maxtouches];
-    int touches = 0;
+    public float[] x = new float[maxtouches];
+    public float[] y = new float[maxtouches];
+    public int touches = 0;
 
     public MyView(Context context) {
         this(context, null);
@@ -101,6 +104,8 @@ public class MyView extends View {
         }
         touches = 0;
 
+
+
         invalidate();
     }
 
@@ -114,6 +119,7 @@ public class MyView extends View {
                     if (touches < maxtouches) {
                         x[touches] = event.getX();
                         y[touches] = event.getY();
+
                         touches = touches + 1;
                         invalidate();
                     }

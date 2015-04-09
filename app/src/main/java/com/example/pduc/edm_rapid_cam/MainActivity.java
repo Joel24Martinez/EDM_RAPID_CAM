@@ -19,6 +19,10 @@ public class MainActivity extends Activity {
     int L1chosen = 6;//Parameter value
     int L2chosen = 8;//Parameter value
     String shape = "tshape";//Type of shape
+    int maxtouches = 30;
+    float[] x = new float[maxtouches];
+    float[] y = new float[maxtouches];
+    int touches = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,11 +103,22 @@ public class MainActivity extends Activity {
         shape = "cshape";
         Mycanvas.DrawCustomShapedCanvas();
     }
+
+
+
     //Call ChooseCoordinates.java
     public void ChooseCclicked(View v) {
+        touches=Mycanvas.touches;
+        x=Mycanvas.x;
+        y=Mycanvas.y;
         final Context context = this;
-        Intent intent = new Intent(context, ChooseCoordinates.class);
-        startActivity(intent);
+        Intent choosecoo = new Intent(context, ChooseCoordinates.class);
+        choosecoo.putExtra("touches", touches);
+        choosecoo.putExtra("maximumtouches", maxtouches);
+        choosecoo.putExtra("coordinate_x", x);
+        choosecoo.putExtra("coordinate_y", y);
+        startActivity(choosecoo);
     }
+
 
 }

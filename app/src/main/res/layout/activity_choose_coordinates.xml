@@ -9,7 +9,7 @@
     android:paddingTop="16dp">
 
 
-    <com.example.customView.MyView
+    <com.example.customView.ChooseCoordinatesView
         android:id="@+id/custom_view"
         android:layout_width="600dp"
         android:layout_height="fill_parent"
