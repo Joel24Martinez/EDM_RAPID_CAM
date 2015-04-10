@@ -20,7 +20,8 @@
 
         <activity
             android:name=".ChooseCoordinates"
-            android:label="@string/title_activity_choose_coordinates" >
+            android:label="@string/title_activity_choose_coordinates"
+            android:windowSoftInputMode="stateHidden">
         </activity>
     </application>
 

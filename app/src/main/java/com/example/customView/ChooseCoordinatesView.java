@@ -16,7 +16,7 @@ public class ChooseCoordinatesView extends View {
     private Paint paint;
     private Paint text;
     int Bitmapsize = 1200;
-    int maxtouches = 30;
+    int maxtouches = 10;
     float[] x = new float[maxtouches];
     float[] y = new float[maxtouches];
     int touches = 0;

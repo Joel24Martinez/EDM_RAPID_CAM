@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
     int L1chosen = 6;//Parameter value
     int L2chosen = 8;//Parameter value
     String shape = "tshape";//Type of shape
-    int maxtouches = 30;
+    int maxtouches = 10;
     float[] x = new float[maxtouches];
     float[] y = new float[maxtouches];
     int touches = 0;

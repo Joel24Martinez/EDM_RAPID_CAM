@@ -26,7 +26,7 @@ public class MyView extends View {
     int tparam1 = 6;
     int tparam2 = 8;
     int Bitmapsize = 1200;
-    int maxtouches = 30;
+    int maxtouches = 10;
     public float[] x = new float[maxtouches];
     public float[] y = new float[maxtouches];
     public int touches = 0;
