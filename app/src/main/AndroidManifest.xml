@@ -17,11 +17,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ChooseCoordinates"
             android:label="@string/title_activity_choose_coordinates"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name=".Gcode"
+            android:label="@string/title_activity_gcode" >
         </activity>
     </application>
 

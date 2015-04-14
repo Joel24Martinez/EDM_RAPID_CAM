@@ -51,6 +51,8 @@ public class MyView extends View {
         text.setTextSize(30);
         Bitmap bg = Bitmap.createBitmap(Bitmapsize, Bitmapsize, Bitmap.Config.ARGB_8888);
 
+
+
         if (shape == "tshape") {
 
             canvas.drawLine((Bitmapsize / 2) - (tparam1 * 100 / 2), 100, (Bitmapsize + (tparam1 * 100)) / 2, 100, paint);

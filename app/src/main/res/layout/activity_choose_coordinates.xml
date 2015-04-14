@@ -295,6 +295,13 @@
                 android:id="@+id/CB_L_9"
                 android:layout_column="3" />
         </TableRow>
+        <Button
+
+            android:text="G code"
+            android:onClick="Gcodeclicked"
+            android:id="@+id/buttonGC"
+            android:background="#00000000"
+            />
 
     </TableLayout>
 

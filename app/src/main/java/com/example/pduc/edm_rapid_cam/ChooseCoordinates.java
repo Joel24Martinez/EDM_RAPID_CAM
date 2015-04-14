@@ -1,6 +1,8 @@
 package com.example.pduc.edm_rapid_cam;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -711,6 +713,16 @@ public class ChooseCoordinates extends Activity {
 
 
 
+    }
+
+    public void Gcodeclicked(View v) {
+        final Context context = this;
+        Intent getGcode = new Intent(context, Gcode.class);
+        getGcode.putExtra("touches", touches);
+        getGcode.putExtra("maximumtouches", maxtouches);
+        getGcode.putExtra("coordinate_x", x);
+        getGcode.putExtra("coordinate_y", y);
+        startActivity(getGcode);
     }
 
 
