@@ -106,8 +106,6 @@ public class MyView extends View {
         }
         touches = 0;
 
-
-
         invalidate();
     }
 
@@ -119,8 +117,8 @@ public class MyView extends View {
                 if (shape == "custom" +
                         "shape") {
                     if (touches < maxtouches) {
-                        x[touches] = event.getX();
-                        y[touches] = event.getY();
+                        x[touches] = Math.round(event.getX());
+                        y[touches] = Math.round(event.getY());
 
                         touches = touches + 1;
                         invalidate();
