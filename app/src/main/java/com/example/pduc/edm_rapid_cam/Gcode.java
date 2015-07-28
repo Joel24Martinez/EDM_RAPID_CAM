@@ -3,9 +3,11 @@ package com.example.pduc.edm_rapid_cam;
 import android.app.Activity;
 import android.content.Context;
 import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -48,6 +50,11 @@ public class Gcode extends Activity {
     int port = 2000;
     String connectionstate = " ";
     int Buffersize = 3;
+    boolean isSocketConnected=false;
+    WifiConfiguration conf;
+    WifiManager wifiManager;
+    List<WifiConfiguration> list;
+    boolean isSocketClosed=true;
 
     //data transmission
     int testByte = 0;
@@ -91,23 +98,16 @@ public class Gcode extends Activity {
         ChCoorcanvas.DrawCustomShapedCanvas(touches, maxtouches, x, y); //Calling mehtod in ChooseCordinateView.java
 
         //Network connection
-        WifiConfiguration conf = new WifiConfiguration();
-        conf.SSID = "\"" + networkSSID + "\"";
-        conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
-        WifiManager wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
-        wifiManager.addNetwork(conf);
-        List<WifiConfiguration> list = wifiManager.getConfiguredNetworks();
-        for (WifiConfiguration i : list) {
-            if (i.SSID != null && i.SSID.equals("\"" + networkSSID + "\"")) {
-                wifiManager.disconnect();
-                wifiManager.enableNetwork(i.networkId, true);
-                wifiManager.reconnect();
-                break;
-            }
+
+        while (isConnectedTo(networkSSID) == false) {
+            sendConnectionRequest();
         }
 
+        new Thread(SocketRequest).start();
 
-        s = new Socket();
+        while (isSocketConnected == false) {
+        }
+
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -121,13 +121,15 @@ public class Gcode extends Activity {
         @Override
         public void run() {
             try {
-                s.connect((new InetSocketAddress(InetAddress.getByName(ip), port)), 2000);
+                //s.connect((new InetSocketAddress(InetAddress.getByName(ip), port)), 2000);
                 s.setReceiveBufferSize(Buffersize);
                 s.setSendBufferSize(1024);
-            } catch (UnknownHostException e) {
+            }
+            /*catch (UnknownHostException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-            } catch (IOException e) {
+            } */
+            catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
@@ -166,6 +168,95 @@ public class Gcode extends Activity {
             }
         }
     }
+
+    private Runnable SocketRequest = new Runnable() {
+        @Override
+        public void run() {
+            SocketConnection();
+            isSocketClosed = s.isClosed();
+            SocketClosed();
+        }
+    };
+
+
+    public void sendConnectionRequest(){
+        conf = new WifiConfiguration();
+        conf.SSID = "\"" + networkSSID + "\"";
+        conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+        wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        wifiManager.addNetwork(conf);
+        list = wifiManager.getConfiguredNetworks();
+        for (WifiConfiguration i : list) {
+            if (i.SSID != null && i.SSID.equals("\"" + networkSSID + "\"")) {
+                wifiManager.disconnect();
+                wifiManager.enableNetwork(i.networkId, true);
+                wifiManager.reconnect();
+                break;
+            }
+        }
+
+    };
+
+    public void SocketConnection(){
+        while (isSocketConnected == false) {
+            try {
+
+                s = new Socket();
+                s.connect((new InetSocketAddress(InetAddress.getByName(ip), port)), 2000);
+                isSocketConnected = s.isConnected();
+
+            }catch (UnknownHostException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            catch (IOException ex) {
+                Log.e("TCP Error", ex.getLocalizedMessage());
+            }
+        }
+    };
+
+    public void SocketClosed(){
+        while (isSocketClosed == true) {
+            try {
+
+                s = new Socket();
+                s.connect((new InetSocketAddress(InetAddress.getByName(ip), port)), 2000);
+                isSocketClosed = s.isClosed();
+
+            }catch (UnknownHostException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            catch (IOException ex) {
+                Log.e("TCP Error", ex.getLocalizedMessage());
+            }
+        }
+    };
+
+
+
+
+
+
+    boolean isConnectedTo(String t) {
+
+        try {
+            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+
+            if (wifiInfo.getSSID().contains(t))
+                return true;
+        } catch (Exception a) {
+        }
+
+        return false;
+
+    }
+
+
+
+
 
 
 }
