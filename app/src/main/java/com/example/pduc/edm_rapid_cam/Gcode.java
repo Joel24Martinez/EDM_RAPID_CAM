@@ -145,6 +145,12 @@ public class Gcode extends Activity {
                     sendDatabytes((byte) productfactor);
                     sumfactor=x_int[i]-productfactor*255;
                     sendDatabytes((byte) (sumfactor & 0xFF));
+
+                    productfactor=y_int[i]/255;
+                    sendDatabytes((byte) productfactor);
+                    sumfactor=y_int[i]-productfactor*255;
+                    sendDatabytes((byte) (sumfactor & 0xFF));
+
                     i++;
 
                 }
