@@ -119,6 +119,11 @@ public class MainActivity extends Activity {
         choosecoo.putExtra("coordinate_y", y);
         startActivity(choosecoo);
     }
-
+    //Call ManualMode.java
+    public void Manualclicked(View v) {
+        final Context context = this;
+        Intent ManualMode = new Intent(context, Manual_Mode.class);
+        startActivity(ManualMode);
+    }
 
 }

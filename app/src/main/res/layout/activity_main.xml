@@ -49,6 +49,18 @@
         android:background="#00000000"
          />
 
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Manual"
+        android:onClick="Manualclicked"
+        android:id="@+id/button_manual"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:background="#00000000"
+        />
+
 
     <NumberPicker
         android:id="@+id/L1"

@@ -137,23 +137,25 @@ public class Gcode extends Activity {
 
             while (testByte == 0) {
 
-                sendDatabytes((byte) 11);
+                sendDatabytes((byte) 15);
                 sendDatabytes((byte) touches);
                 for (int i = 0; i < touches; ) {
-                    sendDatabytes((byte) (13+(i*2)));
+                    sendDatabytes((byte) (17+(i*2)));
                     productfactor=x_int[i]/255;
                     sendDatabytes((byte) productfactor);
                     sumfactor=x_int[i]-productfactor*255;
                     sendDatabytes((byte) (sumfactor & 0xFF));
 
                     productfactor=y_int[i]/255;
-                    sendDatabytes((byte) productfactor);
+                    sendDatabytes((byte) (productfactor & 0xFF));
                     sumfactor=y_int[i]-productfactor*255;
                     sendDatabytes((byte) (sumfactor & 0xFF));
 
                     i++;
 
                 }
+
+
             }
 
         }
@@ -185,11 +187,14 @@ public class Gcode extends Activity {
     };
 
 
-    public void sendConnectionRequest(){
+    public void sendConnectionRequest() {
+
+        wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+
         conf = new WifiConfiguration();
         conf.SSID = "\"" + networkSSID + "\"";
         conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
-        wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+
         wifiManager.addNetwork(conf);
         list = wifiManager.getConfiguredNetworks();
         for (WifiConfiguration i : list) {
@@ -260,7 +265,17 @@ public class Gcode extends Activity {
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();  // Always call the superclass method first
+        try {
+            s.close();
+        }
+        catch (IOException ex) {
+            Log.e("TCP Error", ex.getLocalizedMessage());
+        }
 
+    }
 
 
 

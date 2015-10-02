@@ -34,6 +34,11 @@
             android:name=".Gcode"
             android:label="@string/title_activity_gcode" >
         </activity>
+        <activity
+            android:name=".Manual_Mode"
+            android:label="Manual Mode"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
     </application>
 
 </manifest>

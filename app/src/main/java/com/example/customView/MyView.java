@@ -20,7 +20,7 @@ public class MyView extends View {
     //Some variables for the View
     private Paint paint;
     private Paint text;
-    String shape = "tshape";
+    String shape = "customshape";
     int yparam1 = 6;
     int yparam2 = 6;
     int tparam1 = 6;

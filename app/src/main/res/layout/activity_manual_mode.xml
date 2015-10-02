@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
+
+
+    <ImageButton
+        android:id="@+id/X_PLUS"
+        android:layout_width="75dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:onClick="XPLUSclicked"
+        android:src="@drawable/up"
+        android:background="#00000000"
+        android:scaleType="fitXY"/>
+    <ImageButton
+        android:id="@+id/X_MINUS"
+        android:layout_width="75dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="100dp"
+        android:onClick="XMINUSclicked"
+        android:src="@drawable/down"
+        android:background="#00000000"
+        android:scaleType="fitXY"/>
+    <ImageButton
+        android:id="@+id/Y_PLUS"
+        android:layout_width="75dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="50dp"
+        android:onClick="YPLUSclicked"
+        android:src="@drawable/up"
+        android:background="#00000000"
+        android:scaleType="fitXY"/>
+    <ImageButton
+        android:id="@+id/Y_MINUS"
+        android:layout_width="75dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="200dp"
+        android:layout_marginBottom="100dp"
+        android:onClick="YMINUSclicked"
+        android:src="@drawable/down"
+        android:background="#00000000"
+        android:scaleType="fitXY"/>
+    <ImageButton
+        android:id="@+id/Z_PLUS"
+        android:layout_width="75dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="50dp"
+        android:onClick="ZPLUSclicked"
+        android:src="@drawable/up"
+        android:background="#00000000"
+        android:scaleType="fitXY"/>
+    <ImageButton
+        android:id="@+id/Z_MINUS"
+        android:layout_width="75dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="350dp"
+        android:layout_marginBottom="100dp"
+        android:onClick="ZMINUSclicked"
+        android:src="@drawable/down"
+        android:background="#00000000"
+        android:scaleType="fitXY"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STOP"
+        android:id="@+id/STOPbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X"
+        android:textSize="40dp"
+        android:id="@+id/X_tv"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="170dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Y"
+        android:textSize="40dp"
+        android:id="@+id/Y_tv"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="225dp"
+        android:layout_marginTop="170dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Z"
+        android:textSize="40dp"
+        android:id="@+id/Z_tv"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="375dp"
+        android:layout_marginTop="170dp" />
+
+
+</RelativeLayout>
